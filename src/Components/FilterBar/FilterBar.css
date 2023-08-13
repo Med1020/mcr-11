@@ -1,0 +1,9 @@
+.filter {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+a {
+  color: white;
+}

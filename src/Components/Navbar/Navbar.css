@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: rgb(63, 62, 62);
+  color: white;
+  align-items: center;
+}
+
+.others {
+  display: flex;
+  justify-content: space-between;
+}
+
+.others p {
+  padding: 0px 10px;
+}
+.searchbar input {
+  width: 30vw;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.icon a {
+  color: white;
+}
+.others a {
+  color: white;
+}
