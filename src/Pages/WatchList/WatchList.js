@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { WatchListContext } from "../../Context/WatchlistContext";
+import MovieCard from "../../Components/MovieCard/MovieCard";
 
 const WatchList = () => {
-  return <div>WatchList</div>;
+  const { WatchList } = useContext(WatchListContext);
+  return (
+    <div>
+      <header>WatchList</header>
+      {WatchList.map((movie) => (
+        <MovieCard movie={movie} />
+      ))}
+    </div>
+  );
 };
 
 export default WatchList;

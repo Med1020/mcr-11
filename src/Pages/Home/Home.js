@@ -12,38 +12,46 @@ const Home = () => {
 
   const filterByGenre = useCallback(
     (movies) => {
+      console.log(filters.genre);
       return filters.genre === "All Genre"
         ? movies
-        : movies.filter(({ genre }) => genre === filters.genre);
+        : movies.filter(({ genre }) => genre.includes(filters.genre));
     },
-    [filters]
+    [filters.genre]
   );
 
   const filterByRating = useCallback(
     (movies) => {
+      console.log(filters.rating);
       return filters.rating === "Rating"
         ? movies
-        : movies.filter(({ rating }) => rating === filters.rating);
+        : movies.filter(
+            ({ rating }) => Number(rating) === Number(filters.rating)
+          );
     },
-    [filters]
+    [filters.rating]
   );
 
   const filterByYear = useCallback(
     (movies) => {
       return filters.releaseYear === "Release Year"
         ? movies
-        : movies.filter(({ year }) => year === filters.releaseYear);
+        : movies.filter(
+            ({ year }) => Number(year) === Number(filters.releaseYear)
+          );
     },
     [filters]
   );
   useEffect(() => {
     let localStorageData = JSON.parse(localStorage.getItem("item"));
-    let result = filterByGenre(localStorageData);
+    let result = localStorageData || data;
+    result = filterByGenre(result);
     result = filterByRating(result);
     result = filterByYear(result);
-    setFilteredMovies(result || data);
+    setFilteredMovies(result);
   }, [data, filterByGenre, filterByRating, filterByYear]);
 
+  console.log(filteredMovies);
   return (
     <div className="home">
       <FilterBar />
